@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>墨染小项目导航</title>
+</head>
+<style>
+    *{margin: 0px;padding: 0px}
+    html,body{height: 100%;overflow: hidden}
+    #canvas{
+        border:1px solid #ccc;
+    }
+</style>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var can=document.getElementById("canvas");
+        var context=can.getContext('2d');
+
+
+        var squres=[];
+        can.width=document.body.offsetWidth;
+        can.height=document.body.offsetHeight;
+        var middle=can.width*.5;
+        var mouseX=can.width/2;
+        setSqure()
+        setInterval(function () {
+            context.clearRect(0,0,can.width,can.height);
+            drawBackground();
+            updateSquer()
+            drawAll()
+        },30)
+        function setSqure(){
+            for(var i=0;i<10;i++){
+                var asqure={
+                    x:Math.random()*10-5+i*can.width/10,
+                    y:can.height,
+                    width:Math.random()
+                }
+                squres.push(asqure);
+            }
+
+        }
+        function updateSquer(){
+            for(var i=0;i<squres.length;i++){
+                if(squres[i].y+squres[i].width*225+50<0)
+                resetSquer(squres[i],i);
+                squres[i].y-=(squres[i].width*1.5 +.7);
+                squres[i].x+=squres[i].width*(mouseX-middle)/100
+            }
+            middle+=(mouseX-middle)/50;
+        }
+        function resetSquer(squer,index){
+            squer.width=Math.random();
+            squer.y=can.height;
+            squer.x=Math.random()*10-5+index*can.width/10
+        }
+        function drawAll(){
+            for(var i=0;i<squres.length;i++){
+                drawSqure(squres[i].x,squres[i].y,squres[i].width);
+            }
+        }
+
+        function drawSqure(x,y,width){
+            context.save()
+            context.beginPath()
+            context.fillStyle="rgba(255,255,255,"+ (.5-width/3)+")"
+            context.fillRect(x,y,width*150+50,width*150+50)
+            context.restore()
+        }
+        function drawBackground(){
+            context.beginPath();
+            context.fillStyle="#34CCB9";
+            context.fillRect(0,0,can.width,can.height);
+        }
+        can.onmousemove= function () {
+            console.log(event.clientX,can.width);
+            mouseX=event.clientX
+        }
+    </script>
+</body>
+</html>
