@@ -12,19 +12,91 @@
         position: absolute;
         z-index: -1;
     }
+    .box {
+        margin: 20px;
+        width: 500px;
+        height: 100px;
+        background-color: rgba(255,255,255,.5);
+        border-radius: 10px;
+    }
+    .box p {
+        line-height: 52px;
+        margin-left: 50px;
+        color: #11a381;
+        text-shadow: 0px 0px 5px white;
+    }
+
     a{
+
         display: block;
         width: 10em;
         height: 3em;
         background-color: rgba(255,255,255,.5);
         text-align: center;
         line-height: 3em;
+        text-decoration: none;
+        color: #008d95;
     }
+    h1{
+        text-align: center;
+        line-height: 100px;
+        margin-top: 50px;
+        color: white;
+        font-size: 40px;
+    }
+    .button{
+        background-color: white;
+        border-radius: 5px;
+    }
+    .left{
+        width: 50%;
+        float: left;
+    }
+    .left div{
+        float: right;
+    }
+    .right div{
+        float: left;
+    }
+
+
 </style>
 <body>
 
     <canvas id="canvas"></canvas>
-    <a href="#">某个链接！</a>
+    <div>
+        <h1>墨染的小项目目录</h1>
+        <div class="left">
+            <div class="box">
+                <a class="button" href="http://moranqingchen.github.io/xiaoMi/">仿小米首页</a>
+                <p>仿照小米首页，暂未完工</p>
+            </div>
+            <div class="box">
+                <a class="button" href="http://moranqingchen.github.io/clock/">水花时钟</a>
+                <p>canvas实现水花效果当前时间</p>
+            </div>
+            <div class="box">
+                <a class="button" href="http://moranqingchen.github.io/pushBox/">推箱子！</a>
+                <p>canvas实现推箱子小游戏，可跳关</p>
+            </div>
+        </div>
+        <div class="right">
+            <div class="box">
+                <a class="button" href="http://moranqingchen.github.io/xiaoMi/node3">仿note3海报</a>
+                <p>H5浮动特效海报，暂未完工</p>
+            </div>
+            <div class="box">
+                <a class="button" href="http://moranqingchen.github.io/loveFish/">爱心小鱼</a>
+                <p>canvas实现爱心小鱼游戏，内有游戏说明</p>
+            </div>
+            <div class="box">
+                <a class="button" href="http://moran.ngrok.natapp.cn/">个人博客</a>
+                <p>nodeJS搭建博客，不保证长期开放</p>
+            </div>
+        </div>
+    </div>
+
+
     <script src="main.js"></script>
 </body>
 </html>
