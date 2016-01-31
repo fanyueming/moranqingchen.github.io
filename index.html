@@ -35,7 +35,8 @@
                 var asqure={
                     x:Math.random()*10-5+i*can.width/10,
                     y:can.height,
-                    width:Math.random()
+                    width:Math.random(),
+                    rotate:Math.random()*3
                 }
                 squres.push(asqure);
             }
@@ -43,10 +44,11 @@
         }
         function updateSquer(){
             for(var i=0;i<squres.length;i++){
-                if(squres[i].y+squres[i].width*225+50<0)
+                if(squres[i].y+squres[i].width*450+50<0)
                 resetSquer(squres[i],i);
-                squres[i].y-=(squres[i].width*1.5 +.7);
-                squres[i].x+=squres[i].width*(mouseX-middle)/100
+                squres[i].y-=(squres[i].width*3 +.7);
+                squres[i].x+=squres[i].width*(mouseX-middle)/100;
+                squres[i].rotate+=0.01
             }
             middle+=(mouseX-middle)/50;
         }
@@ -57,24 +59,30 @@
         }
         function drawAll(){
             for(var i=0;i<squres.length;i++){
-                drawSqure(squres[i].x,squres[i].y,squres[i].width);
+                drawSqure(squres[i].x,squres[i].y,squres[i].width,squres[i].rotate);
             }
         }
 
-        function drawSqure(x,y,width){
-            context.save()
+        function drawSqure(x,y,width,rotate){
             context.beginPath()
+            context.save()
+            context.translate(x,y+width*150+50)
+            context.rotate(rotate)
             context.fillStyle="rgba(255,255,255,"+ (.5-width/3)+")"
-            context.fillRect(x,y,width*150+50,width*150+50)
+//            context.fillRect(x,y,width*150+50,width*150+50)
+            context.fillRect(-.5*(width*150+50),-.5*(width*150+50),(width*150+50),(width*150+50))
             context.restore()
         }
         function drawBackground(){
             context.beginPath();
-            context.fillStyle="#34CCB9";
+            var bg = context.createLinearGradient(0,0, can.width *.7, can.height);
+            bg.addColorStop(0, '#34CCB9');
+            bg.addColorStop(1, '#8BE8DD');
+            context.fillStyle = bg;
+            context.fillStyle=bg;
             context.fillRect(0,0,can.width,can.height);
         }
         can.onmousemove= function () {
-            console.log(event.clientX,can.width);
             mouseX=event.clientX
         }
     </script>
