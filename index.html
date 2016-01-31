@@ -32,25 +32,47 @@
         width: 10em;
         height: 3em;
         background-color: rgba(255,255,255,.5);
-        text-align: center;
+        padding-left: 4em;
         line-height: 3em;
         text-decoration: none;
         color: #008d95;
     }
     h1{
         text-align: center;
-        line-height: 100px;
-        margin-top: 50px;
         color: white;
         font-size: 40px;
+        margin-top: 50px;
+    }
+    #headLeft{
+        float: left;
+        height: 1px;
+        width: 60%;
+    }
+    #smallHead{
+        display: block;
+        line-height: 1em;
+        height: 1em;
+        margin-left: -100px;
+        float: left;
+        background-color: rgba(184, 255, 243, 0.62);
+        color: white;
+        padding: 3px;
+        border-radius: 3px;
+        box-shadow: 0 0 3px white;
     }
     .button{
         background-color: white;
         border-radius: 5px;
     }
     .left{
+        margin-top: 10px;
         width: 50%;
         float: left;
+    }
+    .right{
+        width: 50%;
+        float: left;
+        margin-top: 10px;
     }
     .left div{
         float: right;
@@ -66,6 +88,8 @@
     <canvas id="canvas"></canvas>
     <div>
         <h1>墨染的小项目目录</h1>
+        <div id="headLeft"></div>
+        <a id="smallHead" href="">点击访问墨染的github</a>
         <div class="left">
             <div class="box">
                 <a class="button" href="http://moranqingchen.github.io/xiaoMi/">仿小米首页</a>
@@ -76,7 +100,7 @@
                 <p>canvas实现水花效果当前时间</p>
             </div>
             <div class="box">
-                <a class="button" href="http://moranqingchen.github.io/pushBox/">推箱子！</a>
+                <a class="button" href="http://moranqingchen.github.io/pushBox/">推箱子</a>
                 <p>canvas实现推箱子小游戏，可跳关</p>
             </div>
         </div>
